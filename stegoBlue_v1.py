@@ -19,60 +19,10 @@ def getNumber(c, k):
 	"""Function to turn a letter into a number and shift it
 	will use 27 letters such that we can encode special characters
 	as a _ """
-	if c=="a":
-		x = 0
-	elif c=="b":
-		x = 1
-	elif c=="c":
-		x = 2
-	elif c=="d":
-		x = 3
-	elif c=="e":
-		x = 4
-	elif c=="f":
-		x = 5
-	elif c=="g":
-		x = 6
-	elif c=="h":
-		x = 7
-	elif c=="i":
-		x = 8
-	elif c=="j":
-		x = 9
-	elif c=="k":
-		x = 10
-	elif c=="l":
-		x = 11
-	elif c=="m":
-		x = 12
-	elif c=="n":
-		x = 13
-	elif c=="o":
-		x = 14
-	elif c=="p":
-		x = 15
-	elif c=="q":
-		x = 16
-	elif c=="r":
-		x = 17
-	elif c=="s":
-		x = 18
-	elif c=="t":
-		x = 19
-	elif c=="u":
-		x = 20
-	elif c=="v":
-		x = 21
-	elif c=="w":
-		x = 22
-	elif c=="x":
-		x = 23
-	elif c=="y":
-		x = 24
-	elif c=="z":
-		x = 25
-	else:
-		x = 26
+	x = {
+	'a':0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7, 'i':8, 'j':9, 'k':10, 'l':11, 'm':12,
+	'n': 13, 'o': 14, 'p': 15, 'q': 16, 'r': 17, 's': 18, 't': 19, 'u': 20, 'v': 21, 'w': 22, 'x': 23, 'y': 24, 'z': 25}
+	x = x.get(c, '')
 
 	x = math.fmod(x + k, 27)
 	return int(x)
@@ -81,61 +31,9 @@ def getLetter(c, k):
 	"""Take a number and turn it into a character"""
 	key = 27 - int(math.fmod(k, 27))
 	x = int(math.fmod(c+key, 27))
-	if x==0:
-		a = "a"
-	elif x==1:
-		a = "b"
-	elif x==2:
-		a = "c"
-	elif x==3:
-		a = "d"
-	elif x==4:
-		a = "e"
-	elif x==5:
-		a = "f"
-	elif x==6:
-		a = "g"
-	elif x==7:
-		a = "h"
-	elif x==8:
-		a = "i"
-	elif x==9:
-		a = "j"
-	elif x==10:
-		a = "k"
-	elif x==11:
-		a = "l"
-	elif x==12:
-		a = "m"
-	elif x==13:
-		a = "n"
-	elif x==14:
-		a = "o"
-	elif x==15:
-		a = "p"
-	elif x==16:
-		a = "q"
-	elif x==17:
-		a = "r"
-	elif x==18:
-		a = "s"
-	elif x==19:
-		a = "t"
-	elif x==20:
-		a = "u"
-	elif x==21:
-		a = "v"
-	elif x==22:
-		a = "w"
-	elif x==23:
-		a = "x"
-	elif x==24:
-		a = "y"
-	elif x==25:
-		a = "z"
-	else:
-		a = "_"
-
+	a = {0: 'a', 1: 'b', 2: 'c', 3: 'd', 4: 'e', 5: 'f', 6: 'g', 7: 'h', 8: 'i', 9: 'j', 10: 'k', 11: 'l', 12: 'm', 13: 'n', 14: 'o',
+	15: 'p', 16: 'q', 17: 'r', 18: 's', 19: 't', 20: 'u', 21: 'v', 22: 'w', 23: 'x', 24: 'y', 25: 'z'}
+	a = a.get(x, '')
 	return a
 
 def pad(s):
@@ -236,15 +134,6 @@ def uncoverMessage(imgPath, key):
 	msgOut.write(message)
 	print "Message written to message.txt"
 
-print "+---------------------------------------------+"
-print ""
-print "  ___|  |                    __ )  |           "
-print "\\___ \\  __|  _ \\  _` |  _ \\  __ \\  | |   |  _ \\"
-print "      | |    __/ (   | (   | |   | | |   |  __/"
-print "_____/ \\__|\\___|\\__, |\\___/  ___/ _|\\__,_|\\___|"
-print "                |___/                          "
-print "+---------------------------------------------+"
-
 def branch():
 
 	select = raw_input("What would you like to do?: ")
@@ -287,5 +176,13 @@ def branch():
 		print "+---------------------------------------------+"
 		branch()
 
-##Starts executing here
-branch()
+if __name__ == '__main__':
+	print "+---------------------------------------------+"
+	print ""
+	print "  ___|  |                    __ )  |           "
+	print "\\___ \\  __|  _ \\  _` |  _ \\  __ \\  | |   |  _ \\"
+	print "      | |    __/ (   | (   | |   | | |   |  __/"
+	print "_____/ \\__|\\___|\\__, |\\___/  ___/ _|\\__,_|\\___|"
+	print "                |___/                          "
+	print "+---------------------------------------------+"
+	branch()
